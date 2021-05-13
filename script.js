@@ -8,8 +8,9 @@ function extractData(res, pincode, i) {
 		for (let j = 0; j < sessions.length; j++) {
 			let capacity = sessions[j].available_capacity;
 			let ageLimit = sessions[j].min_age_limit;
-
+			
 			if (ageLimit == 18 && capacity > 0) {
+				console.log(ageLimit);
 				console.log(pincode[i]);
 				console.log("available");
 				sound.play();
