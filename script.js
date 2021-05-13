@@ -1,9 +1,8 @@
 let abc = "";
 let sound = new Audio("./sound.wav");
-function extractData(res) {
+function extractData(res, pincode, i) {
 	abc = res;
 	res = res.centers;
-	console.log(res);
 	for (let i = 0; i < res.length; i++) {
 		let sessions = res[i].sessions;
 		for (let j = 0; j < sessions.length; j++) {
@@ -11,6 +10,7 @@ function extractData(res) {
 			let ageLimit = sessions[j].min_age_limit;
 
 			if (ageLimit == 18 && capacity > 0) {
+				console.log(pincode[i]);
 				console.log("available");
 				sound.play();
 				return;
@@ -29,14 +29,14 @@ setInterval(() => {
 			url: `https://cdn-api.co-vin.in/api/v2/appointment/sessions/public/calendarByPin?pincode=${pincodes[i]}&date=${date}-05-2021`,
 			type: "GET",
 			success: function (res) {
-				extractData(res);
+				extractData(res, pincodes, i);
 			},
 			error: function (err) {
 				console.log(err);
 			},
 		});
 	}
-}, 1000 * 30);
+}, 1000);
 
 window.addEventListener("keyup", (e) => {
 	if (e.key == "Enter") {
