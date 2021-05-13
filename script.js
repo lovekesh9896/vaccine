@@ -37,7 +37,7 @@ setInterval(() => {
 		});
 	}
 }, 1000);
-
+console.log("new code");
 window.addEventListener("keyup", (e) => {
 	if (e.key == "Enter") {
 		if (sound) {
