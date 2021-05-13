@@ -36,7 +36,7 @@ setInterval(() => {
 			},
 		});
 	}
-}, 1000);
+}, 1000 * 10);
 console.log("new code");
 window.addEventListener("keyup", (e) => {
 	if (e.key == "Enter") {
